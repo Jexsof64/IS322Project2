@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import PageTabs from './PageTabs';
 import GridViewPage from './GridViewPage.js';
-import ListViewPage from './ListViewPage.js';
-import AddTaskPage from './AddTaskPage.js';
 import TaskList from './TaskList.js';
 import AddTask from './AddTask.js';
 
@@ -72,11 +70,13 @@ class App extends React.Component {
         ));
       case 'listViewPage':
         return (this.wrapPage(
-          <ListViewPage />
+          <div>
+            <TaskList tasks={this.state.tasks} onUpdateTaskList={this.onUpdateTaskList} />
+          </div>
         ));
       case 'addTaskPage':
         return (this.wrapPage(
-          <AddTaskPage />
+          <AddTask onSubmit={this.onAddTask} />
         ));
       default:
         return (this.wrapPage(
