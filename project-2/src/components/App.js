@@ -1,51 +1,52 @@
 import React from 'react';
-import axios from 'axios';
 
-import TaskList from './TaskList';
-import AddTask from './AddTask';
+import PageTabs from './PageTabs';
+import GridViewPage from './GridViewPage.js';
+import ListViewPage from './ListViewPage.js';
+import AddTaskPage from './AddTaskPage.js';
 
 class App extends React.Component {
   state = {
-    tasks: [],
-    errorMessage: ''
+    view: 'page1' // Testing for invalid pages, change to 'gridViewPage' later
+  }
+  
+  onViewChange(view) {
+    this.setState({ view });
   }
 
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData() {
-    axios.get('http://my-json-server.typicode.com/bnissen24/project2DB/posts')
-      .then(response => {
-        this.setState({ tasks: response.data });
-      }).catch(error => {
-        this.setState({ errorMessage: error.message });
-      });
-  }
-
-  onAddTask = (taskName) => {
-    let tasks = this.state.tasks;
-    tasks.push({
-      title: taskName,
-      id: this.state.tasks.length + 1,
-      type: 'task',
-      column: 'todo'
-    });
-
-    this.setState({ tasks });
-  }
-
-  onUpdateTaskList = (newTaskList) => {
-    this.setState({ tasks: newTaskList });
-  }
-
-  render() {
+  wrapPage(jsx) {
+    const { view } = this.state;
     return (
       <div className="container">
-        <AddTask onSubmit={this.onAddTask} />
-        <TaskList tasks={this.state.tasks} onUpdateTaskList={this.onUpdateTaskList} />
+        <PageTabs currentView={view}
+                  onViewChange={this.onViewChange.bind(this)}/>
+        {jsx}
       </div>
     );
+  }
+
+  render() 
+  {
+    const { view } = this.state;
+
+    switch (view) {
+      case 'gridViewPage':
+        return (this.wrapPage(
+          <GridViewPage />
+        ));
+      case 'listViewPage':
+        return (this.wrapPage(
+          <ListViewPage />
+        ));
+      case 'addTaskPage':
+        return (this.wrapPage(
+          <AddTaskPage />
+        ));
+      default:
+        return (this.wrapPage(
+          <h2>Invalid Tab, choose another</h2>
+        ));
+    }
   }
 }
 
