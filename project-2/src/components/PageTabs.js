@@ -19,20 +19,20 @@ class PageTabs extends React.Component
   render () 
   {
     return (
-      <ul className='nav page-tabs'>
-        <li className='nav-item'>
+      <ul className="topnav">
+        <li>
           <a className={this.isActiveTab('gridViewPage')}
              onClick={(e) => this.onTabClick(e, 'gridViewPage')}>
             Grid View
           </a>
         </li>
-        <li className='nav-item'>
+        <li>
           <a className={this.isActiveTab('listViewPage')}
              onClick={(e) => this.onTabClick(e, 'listViewPage')}>
             List View
           </a>
         </li>
-        <li className='nav-item'>
+        <li>
           <a className={this.isActiveTab('addTaskPage')}
              onClick={(e) => this.onTabClick(e, 'addTaskPage')}>
             Add Task
