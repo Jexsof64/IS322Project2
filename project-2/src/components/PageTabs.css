@@ -34,7 +34,7 @@ ul.topnav li a {
 }
 
 ul.topnav li a:hover:not(.active) {
-	background-color: rgb(0, 231, 255);
+	background-color: rgb(0, 123, 255);
 }
 
 ul.topnav li a.active {

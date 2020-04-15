@@ -13,7 +13,7 @@ class AddTask extends React.Component {
   render() {
     return (
       <form className="task-input form-group" onSubmit={this.onFormSubmit}>
-        <label htmlFor="newTask">Enter New Task</label>
+        <label htmlFor="newTask">Title</label>
         <input type="text" className="form-control"
                name="newTask"
                value={this.state.newTask}

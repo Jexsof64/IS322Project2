@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 import PageTabs from './PageTabs';
-import GridViewPage from './GridViewPage.js';
 import TaskList from './TaskList.js';
 import AddTask from './AddTask.js';
 
@@ -66,21 +65,40 @@ class App extends React.Component {
     switch (view) {
       case 'gridViewPage':
         return (this.wrapPage(
-          <GridViewPage />
+          <div>
+            <h1>Grid View</h1>
+          </div>
         ));
       case 'listViewPage':
         return (this.wrapPage(
           <div>
+
+            <h1>List View</h1>
+
+            <div class="form-group">
+              <label for="orderBy">Sort By:</label>
+              <select id="orderBy" name="orderBy">
+                <option value="">Select Sorting Value</option>
+                <option value="name">Name (A to Z)</option>
+                <option value="price">Price (Low to High)</option>
+              </select>
+            </div>
+
             <TaskList tasks={this.state.tasks} onUpdateTaskList={this.onUpdateTaskList} />
           </div>
         ));
       case 'addTaskPage':
         return (this.wrapPage(
-          <AddTask onSubmit={this.onAddTask} />
+          <div>
+            <h1>Add Task Form</h1>
+            <AddTask onSubmit={this.onAddTask} />
+          </div>
         ));
       default:
         return (this.wrapPage(
-          <h2>Invalid Tab, choose another</h2>
+          <div>
+            <h2>Invalid Tab, choose another</h2>
+          </div>
         ));
     }
   }
