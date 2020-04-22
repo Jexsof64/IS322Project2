@@ -75,3 +75,18 @@ footer {
 footer p {
 	flex: 1 1 auto;
 }
+
+@media only screen and (max-width: 1000px) {
+	.filter-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+@media only screen and (max-width: 760px) {
+	ul.topnav li.right, 
+	ul.topnav li {
+		float: none;
+	}
+}

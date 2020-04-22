@@ -75,14 +75,36 @@ class App extends React.Component {
 
             <h1>List View</h1>
 
-            <div class="form-group">
-              <label for="orderBy">Sort By:</label>
-              <select id="orderBy" name="orderBy">
-                <option value="">Select Sorting Value</option>
-                <option value="name">Name (A to Z)</option>
-                <option value="price">Price (Low to High)</option>
-              </select>
-            </div>
+            <aside class="filter-bar">
+              <div class="form-group">
+                <label for="orderBy">Sort:</label>
+                <select id="orderBy" name="orderBy">
+                  <option value="">Select Sorting Value</option>
+                  <option value="name">Task Name (A to Z)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                  <option value="">Select Status</option>
+                  <option value="todo">To-Do</option>
+                  <option value="inProgress">In-Progress</option>
+                  <option value="review">Review</option>
+                  <option value="done">Done</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="type">Type:</label>
+                <select id="type" name="type">
+                  <option value="">Select Type</option>
+                  <option value="feature">Feature</option>
+                  <option value="task">Task</option>
+                  <option value="bug">Bug</option>
+                </select>
+              </div>
+            </aside>
 
             <TaskList tasks={this.state.tasks} onUpdateTaskList={this.onUpdateTaskList} />
           </div>
@@ -92,6 +114,18 @@ class App extends React.Component {
           <div>
             <h1>Add Task Form</h1>
             <AddTask onSubmit={this.onAddTask} />
+
+            <div class="form-group">
+              <label for="addType">Type:</label>
+              <select id="addType" name="addType">
+                <option value="">Select Type</option>
+                <option value="feature">Feature</option>
+                <option value="task">Task</option>
+                <option value="bug">Bug</option>
+              </select>
+            </div>
+
+     
           </div>
         ));
       default:
